@@ -4,6 +4,9 @@
 CPU_MODEL=$(lscpu | grep "Model name" | sed -E 's/Model name:\s+//')
 CPU_CORES=$(lscpu | grep "^CPU(s):" | awk '{print $2}')
 
+# Detect OS display name
+OS_NAME=$(cat /etc/os-release | grep "^PRETTY_NAME=" | cut -d'=' -f2 | tr -d '"')
+
 # Detect total RAM size
 RAM_SIZE=$(free -h | awk '/^Mem:/{print $2}')
 
@@ -15,6 +18,7 @@ GPU_INFO=$(lspci | grep -i 'vga\|3d' | awk -F ': ' '{print $2}')
 GPU_MEM=$(glxinfo | grep "Video memory" | awk '{print $3 " MB"}')
 
 # Print results
+echo "OS: $OS_NAME"
 echo "CPU: $CPU_MODEL, $CPU_CORES core(s)"
 echo "RAM: $RAM_SIZE"
 echo "Storage: $STORAGE_INFO"
