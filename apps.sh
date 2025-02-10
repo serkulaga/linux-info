@@ -12,7 +12,7 @@ check_command() {
                 local version=$($cmd --version 2>&1 | grep -oP 'v=\K\S+')
                 ;;
             kubectl)
-                local version=$($cmd version --client --short 2>&1)
+                local version=$($cmd version --client 2>&1)
                 ;;
             gitlab-runner)
                 local version=$($cmd --version 2>&1 | head -n 1)
