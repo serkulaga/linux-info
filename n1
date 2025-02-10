@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Get all active network interfaces
+interfaces=$(ip -o link show | awk -F': ' '{print $2}' | grep -v "lo")
+
+# Loop through each network interface and scan the network
+for interface in $interfaces; do
+    # Get the IP address and network range for the interface
+    ip_address=$(ip -o -f inet addr show $interface | awk '{print $4}')
+    
+    if [ -n "$ip_address" ]; then
+        echo "Scanning network on interface: $interface ($ip_address)"
+        
+        # Perform the nmap scan and output the results in a structured format
+        nmap -p- -sV -oG - $ip_address | awk '
+        BEGIN {
+            FS="|";
+            OFS="\t";
+            print "Host", "Ports", "Service";
+        }
+        {
+            if ($1 ~ /^Host/) {
+                host = $2;
+            }
+            if ($1 ~ /^Ports/) {
+                ports = $2;
+            }
+            if ($1 ~ /^Service Info/) {
+                service = $2;
+                print host, ports, service;
+            }
+        }' | column -t -s $'\t'
+    else
+        echo "No IP address found for interface: $interface"
+    fi
+done
