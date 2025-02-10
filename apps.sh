@@ -26,10 +26,10 @@ check_command() {
 # List of commands to check
 commands=(
     "mysql" "docker" "nginx" "apache2" "php" "python" "git" "node" "ruby"
-    "java" "perl" "firefox" "gcc" "go" "rust" "helm" "terraform"
-    "ansible" "maven" "gradle" "flask" "django" "pip" "redis-server" "wp"
+    "java" "go" "rust" "helm" "terraform"
+    "ansible" "gradle" "flask" "django" "pip" "redis-server" "wp"
     "postgres" "mongodb" "sqlite3" "haproxy" "memcached"
-    "openvpn" "samba" "gitlab-runner"
+    "openvpn" "gitlab-runner"
 )
 
 # Print table header
