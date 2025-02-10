@@ -31,7 +31,7 @@ commands=(
     "mysql" "docker" "nginx" "apache2" "php" "python" "git" "node" "ruby"
     "java" "perl" "firefox" "gcc" "go" "rust" "kubectl" "helm" "terraform"
     "ansible" "maven" "gradle" "flask" "django" "pip" "redis-server" "wp"
-    "postgres" "mongodb" "sqlite3" "haproxy" "memcached" "netcat"
+    "postgres" "mongodb" "sqlite3" "haproxy" "memcached"
     "openvpn" "samba" "gitlab-runner"
 )
 
