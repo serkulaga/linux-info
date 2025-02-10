@@ -11,9 +11,6 @@ check_command() {
             redis-server)
                 local version=$($cmd --version 2>&1 | grep -oP 'v=\K\S+')
                 ;;
-            kubectl)
-                local version=$($cmd version --client 2>&1)
-                ;;
             gitlab-runner)
                 local version=$($cmd --version 2>&1 | head -n 1)
                 ;;
@@ -29,7 +26,7 @@ check_command() {
 # List of commands to check
 commands=(
     "mysql" "docker" "nginx" "apache2" "php" "python" "git" "node" "ruby"
-    "java" "perl" "firefox" "gcc" "go" "rust" "kubectl" "helm" "terraform"
+    "java" "perl" "firefox" "gcc" "go" "rust" "helm" "terraform"
     "ansible" "maven" "gradle" "flask" "django" "pip" "redis-server" "wp"
     "postgres" "mongodb" "sqlite3" "haproxy" "memcached"
     "openvpn" "samba" "gitlab-runner"
