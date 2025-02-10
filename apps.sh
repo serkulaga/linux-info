@@ -3,18 +3,24 @@
 check_command() {
     local cmd=$1
     if command -v $cmd &> /dev/null; then
-        if [[ "$cmd" == "nginx" || "$cmd" == "node" || "$cmd" == "wp" ]]; then
-            local version=$($cmd -v 2>&1 | head -n 1)
-        elif [[ "$cmd" == "redis-server" ]]; then
-            local version=$($cmd --version 2>&1 | grep -oP 'v=\K\S+')
-        else
-            local version=$($cmd --version 2>&1 | head -n 1)
-        fi
+        case "$cmd" in
+            nginx | node | wp)
+                local version=$($cmd -v 2>&1 | head -n 1)
+                ;;
+            redis-server)
+                local version=$($cmd --version 2>&1 | grep -oP 'v=\K\S+')
+                ;;
+            kubectl)
+                local version=$($cmd version --client --short 2>&1)
+                ;;
+            *)
+                local version=$($cmd --version 2>&1 | head -n 1)
+                ;;
+        esac
         local path=$(command -v $cmd)
         echo -e "$cmd\t$version\t$path"
     fi
 }
-
 # List of commands to check
 commands=(
     "mysql" "docker" "nginx" "apache2" "php" "python" "git" "node" "ruby"
