@@ -7,9 +7,13 @@ curl -sHL https://raw.githubusercontent.com/serkulaga/linux-info/refs/heads/main
 
 
 ### Network
+
+[arp-scan](https://www.kali.org/tools/arp-scan/)
+
 ```
-curl https://raw.githubusercontent.com/serkulaga/linux-info/refs/heads/main/nmap.sh | bash
+arp-scan -l
 ```
+
 
 ### Applications
 
