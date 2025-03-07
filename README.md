@@ -20,3 +20,9 @@ arp-scan -l
 ```
 curl https://raw.githubusercontent.com/serkulaga/linux-info/refs/heads/main/apps.sh | bash
 ```
+
+### Docker
+
+```
+curl https://raw.githubusercontent.com/serkulaga/linux-info/refs/heads/main/docker.sh | bash
+```
