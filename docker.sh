@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Print CSV header
-printf "CONTAINER_NAME\tIMAGE\tPORTS\tCPU\tMEMORY_USED\tMEMORY_ALLOCATED\tMEMORY_PERCENTAGE\n\n"
+printf "CONTAINER_NAME\tIMAGE\tPORTS\tCPU\tMEMORY_USED\tMEMORY_ALLOCATED\tMEMORY_PERCENTAGE\n"
 
 # Loop through running containers
 docker ps --format "{{.Names}},{{.Image}},{{.Ports}}" | while IFS=, read -r name image ports; do
