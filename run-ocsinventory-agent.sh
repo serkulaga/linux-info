@@ -14,9 +14,9 @@ sudo apt-get update
 
 # Pre-seed the debconf values including the custom "tag" setting
 sudo debconf-set-selections <<EOF
-ocsinventory-agent  ocsinventory-agent/method   select  http
-ocsinventory-agent  ocsinventory-agent/server   string  ${OCS_SERVER}
-ocsinventory-agent  ocsinventory-agent/tag      string  ${OCS_TAG}
+ocsinventory-agent  ocsinventory-agent/method    select  http
+ocsinventory-agent  ocsinventory-agent/server    string  ${OCS_SERVER}
+ocsinventory-agent  ocsinventory-agent/tag       string  ${OCS_TAG}
 EOF
 
 # Install ocsinventory-agent non-interactively
