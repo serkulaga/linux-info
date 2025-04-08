@@ -10,6 +10,8 @@ fi
 OCS_SERVER="$1"
 OCS_TAG="$2"
 
+sudo apt-get update
+
 # Pre-seed the debconf values including the custom "tag" setting
 sudo debconf-set-selections <<EOF
 ocsinventory-agent  ocsinventory-agent/method   select  http
